@@ -1,0 +1,11 @@
+<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VYRONIX logo">
+  <defs>
+    <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5d899"/>
+      <stop offset="100%" stop-color="#8f6a1c"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="32" fill="#0d0d0d"/>
+  <circle cx="80" cy="80" r="58" fill="url(#g)"/>
+  <path d="M52 52h18l20 42 20-42h18l-30 56h-12L52 52z" fill="#111111"/>
+</svg>
