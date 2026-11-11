@@ -57,7 +57,6 @@ section{padding:100px 8%}
 .contact-item strong{color:#00d9ff;display:block;font-size:12px;letter-spacing:2px}
 .contact-item a{color:white;text-decoration:none}
 footer{padding:35px 8%;border-top:1px solid #1b3048;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#8797ac;font-size:12px}
-/* Scroll motion: adjacent columns move in opposite directions; cards reveal alternately. */
 .scroll-motion{opacity:0;transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1);will-change:transform,opacity}
 .scroll-motion.from-left{transform:translate3d(-70px,45px,0)}
 .scroll-motion.from-right{transform:translate3d(70px,-45px,0)}
@@ -71,88 +70,39 @@ footer{padding:35px 8%;border-top:1px solid #1b3048;display:flex;justify-content
 </style>
 </head>
 <body>
-<header>
- <div class="logo">VYRONIX<span>.</span></div>
- <nav><a href="#home">HOME</a><a href="#about">ABOUT</a><a href="#services">SERVICES</a><a href="#contact">CONTACT</a></nav>
-</header>
-<div class="hero" id="home">
- <canvas id="globe"></canvas>
- <div class="hero-content">
-  <div class="tag">NEXT GENERATION TECHNOLOGY</div>
-  <h1>INNOVATE.<br><span class="gradient">DEVELOP.</span><br>SECURE.</h1>
-  <p>Transforming ideas into intelligent digital solutions. Discover innovation through Artificial Intelligence, Software Development, Cybersecurity and Technology.</p>
-  <div class="buttons"><a href="#services" class="btn">EXPLORE OUR SERVICES ↗</a><a href="#contact" class="btn btn-outline">CONTACT US</a></div>
- </div>
-</div>
-<section id="about">
- <div class="about">
-  <div class="about-box scroll-motion from-left"><h3>ABOUT VYRONIX TECHNOLOGY</h3><p>VYRONIX TECHNOLOGY is a technology company focused on innovation, digital transformation and intelligent solutions. We help businesses and individuals move forward with modern software, AI technologies, web development and cybersecurity solutions.<br><br>Our vision is to turn ambitious ideas into meaningful technology that creates new possibilities.</p></div>
-  <div class="about-visual scroll-motion from-right"><div class="cube"><div class="face front">VY</div><div class="face back">AI</div><div class="face right">01</div><div class="face left">VX</div><div class="face top">TECH</div><div class="face bottom">∞</div></div></div>
- </div>
-</section>
-<section id="services">
- <div class="heading scroll-motion from-down"><small>WHAT WE DO</small><h2>OUR TECHNOLOGY</h2><p>Building digital experiences for tomorrow.</p></div>
- <div class="services">
-  <div class="card scroll-motion from-left" style="--delay:0ms"><div class="icon">✧</div><h3>Artificial Intelligence</h3><p>AI assistants, intelligent systems, machine learning and AI-powered business solutions.</p></div>
-  <div class="card scroll-motion from-down" style="--delay:80ms"><div class="icon">⌘</div><h3>Software Development</h3><p>Custom software, business applications, management systems and digital platforms.</p></div>
-  <div class="card scroll-motion from-right" style="--delay:160ms"><div class="icon">◈</div><h3>Cybersecurity</h3><p>Ethical hacking, authorized security testing, vulnerability assessment and security research.</p></div>
-  <div class="card scroll-motion from-right" style="--delay:0ms"><div class="icon">▣</div><h3>Website Development</h3><p>Professional websites, modern web applications and responsive digital experiences.</p></div>
-  <div class="card scroll-motion from-down" style="--delay:80ms"><div class="icon">⌁</div><h3>Digital Marketing</h3><p>Digital branding, social media management and online marketing solutions.</p></div>
-  <div class="card scroll-motion from-left" style="--delay:160ms"><div class="icon">⚙</div><h3>Automation &amp; Robotics</h3><p>Smart automation, connected systems and innovative technology development.</p></div>
- </div>
-</section>
-<section class="banner">
- <div class="scroll-motion from-up"><h2>THE FUTURE IS <span class="gradient">NOW.</span></h2><p>Technology is changing the world. We believe in building, exploring and creating solutions that make a difference.</p><a href="#contact" class="btn">CONNECT WITH US ↗</a></div>
-</section>
-<section id="contact">
- <div class="heading scroll-motion from-down"><small>GET IN TOUCH</small><h2>CONTACT VYRONIX</h2><p>Let's discuss your next technology project.</p></div>
- <div class="contact">
-  <div class="contact-box scroll-motion from-left"><h3>VYRONIX TECHNOLOGY</h3>
-   <div class="contact-item"><strong>PHONE 01</strong><a href="tel:+919961644961">+91 99616 49961</a></div>
-   <div class="contact-item"><strong>PHONE 02</strong><a href="tel:+917559064669">+91 75590 64669</a></div>
-   <div class="contact-item"><strong>LOCATION</strong>Gallilia Building, Chattanchal,<br>Kasaragod, Kerala, India.</div>
-   <div class="contact-item"><strong>INSTAGRAM</strong><a href="https://www.instagram.com/vyronixtechnology/" target="_blank" rel="noopener noreferrer">@vyronixtechnology ↗</a></div>
-  </div>
-  <div class="contact-box scroll-motion from-right"><h3>LET'S CONNECT</h3><p style="color:#aab8ca;line-height:1.9;margin-bottom:25px">Have a project or business idea? Contact our team directly through phone or WhatsApp.</p>
-   <a class="btn" style="display:block;text-align:center;margin-bottom:15px" href="https://wa.me/919961644961?text=Hello%20VYRONIX%20TECHNOLOGY">WHATSAPP NOW ↗</a>
-   <a class="btn btn-outline" style="display:block;text-align:center;margin-bottom:15px" href="tel:+919961644961">CALL NOW</a>
-   <a class="btn btn-outline" style="display:block;text-align:center" href="https://wa.me/917559064669?text=Hello%20VYRONIX%20TECHNOLOGY">WHATSAPP SECOND NUMBER</a>
-  </div>
- </div>
-</section>
+<header><div class="logo">VYRONIX<span>.</span></div><nav><a href="#home">HOME</a><a href="#about">ABOUT</a><a href="#services">SERVICES</a><a href="#contact">CONTACT</a></nav></header>
+<div class="hero" id="home"><canvas id="globe"></canvas><div class="hero-content"><div class="tag">NEXT GENERATION TECHNOLOGY</div><h1>INNOVATE.<br><span class="gradient">DEVELOP.</span><br>SECURE.</h1><p>Transforming ideas into intelligent digital solutions. Discover innovation through Artificial Intelligence, Software Development, Cybersecurity and Technology.</p><div class="buttons"><a href="#services" class="btn">EXPLORE OUR SERVICES ↗</a><a href="#contact" class="btn btn-outline">CONTACT US</a></div></div></div>
+<section id="about"><div class="about"><div class="about-box scroll-motion from-left"><h3>ABOUT VYRONIX TECHNOLOGY</h3><p>VYRONIX TECHNOLOGY is a technology company focused on innovation, digital transformation and intelligent solutions. We help businesses and individuals move forward with modern software, AI technologies, web development and cybersecurity solutions.<br><br>Our vision is to turn ambitious ideas into meaningful technology that creates new possibilities.</p></div><div class="about-visual scroll-motion from-right"><div class="cube"><div class="face front">VY</div><div class="face back">AI</div><div class="face right">01</div><div class="face left">VX</div><div class="face top">TECH</div><div class="face bottom">∞</div></div></div></div></section>
+<section id="services"><div class="heading scroll-motion from-down"><small>WHAT WE DO</small><h2>OUR TECHNOLOGY</h2><p>Building digital experiences for tomorrow.</p></div><div class="services"><div class="card scroll-motion from-left" style="--delay:0ms"><div class="icon">✧</div><h3>Artificial Intelligence</h3><p>AI assistants, intelligent systems, machine learning and AI-powered business solutions.</p></div><div class="card scroll-motion from-down" style="--delay:80ms"><div class="icon">⌘</div><h3>Software Development</h3><p>Custom software, business applications, management systems and digital platforms.</p></div><div class="card scroll-motion from-right" style="--delay:160ms"><div class="icon">◈</div><h3>Cybersecurity</h3><p>Ethical hacking, authorized security testing, vulnerability assessment and security research.</p></div><div class="card scroll-motion from-right" style="--delay:0ms"><div class="icon">▣</div><h3>Website Development</h3><p>Professional websites, modern web applications and responsive digital experiences.</p></div><div class="card scroll-motion from-down" style="--delay:80ms"><div class="icon">⌁</div><h3>Digital Marketing</h3><p>Digital branding, social media management and online marketing solutions.</p></div><div class="card scroll-motion from-left" style="--delay:160ms"><div class="icon">⚙</div><h3>Automation &amp; Robotics</h3><p>Smart automation, connected systems and innovative technology development.</p></div></div></section>
+<section class="banner"><div class="scroll-motion from-up"><h2>THE FUTURE IS <span class="gradient">NOW.</span></h2><p>Technology is changing the world. We believe in building, exploring and creating solutions that make a difference.</p><a href="#contact" class="btn">CONNECT WITH US ↗</a></div></section>
+<section id="contact"><div class="heading scroll-motion from-down"><small>GET IN TOUCH</small><h2>CONTACT VYRONIX</h2><p>Let's discuss your next technology project.</p></div><div class="contact"><div class="contact-box scroll-motion from-left"><h3>VYRONIX TECHNOLOGY</h3><div class="contact-item"><strong>PHONE 01</strong><a href="tel:+919961644961">+91 99616 49961</a></div><div class="contact-item"><strong>PHONE 02</strong><a href="tel:+917559064669">+91 75590 64669</a></div><div class="contact-item"><strong>LOCATION</strong>Gallilia Building, Chattanchal,<br>Kasaragod, Kerala, India.</div><div class="contact-item"><strong>INSTAGRAM</strong><a href="https://www.instagram.com/vyronixtechnology/" target="_blank" rel="noopener noreferrer">@vyronixtechnology ↗</a></div></div><div class="contact-box scroll-motion from-right"><h3>LET'S CONNECT</h3><p style="color:#aab8ca;line-height:1.9;margin-bottom:25px">Have a project or business idea? Contact our team directly through phone or WhatsApp.</p><a class="btn" style="display:block;text-align:center;margin-bottom:15px" href="https://wa.me/919961644961?text=Hello%20VYRONIX%20TECHNOLOGY">WHATSAPP NOW ↗</a><a class="btn btn-outline" style="display:block;text-align:center;margin-bottom:15px" href="tel:+919961644961">CALL NOW</a><a class="btn btn-outline" style="display:block;text-align:center" href="https://wa.me/917559064669?text=Hello%20VYRONIX%20TECHNOLOGY">WHATSAPP SECOND NUMBER</a></div></div></section>
 <footer><div>© <span id="year"></span> VYRONIX TECHNOLOGY. All rights reserved.</div><div>INNOVATE. DEVELOP. SECURE.</div></footer>
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
 const motionItems=document.querySelectorAll(".scroll-motion");
-if("IntersectionObserver" in window){
- const motionObserver=new IntersectionObserver((entries,observer)=>{
-  entries.forEach(entry=>{
-   if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}
-  });
- },{threshold:.15,rootMargin:"0px 0px -35px 0px"});
- motionItems.forEach(item=>motionObserver.observe(item));
-}else{motionItems.forEach(item=>item.classList.add("is-visible"))}
+if("IntersectionObserver" in window){const motionObserver=new IntersectionObserver((entries,observer)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}})},{threshold:.15,rootMargin:"0px 0px -35px 0px"});motionItems.forEach(item=>motionObserver.observe(item))}else{motionItems.forEach(item=>item.classList.add("is-visible"))}
 const canvas=document.getElementById("globe");
 const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(55,window.innerWidth/window.innerHeight,0.1,1000);
-const renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true});
+const camera=new THREE.PerspectiveCamera(55,window.innerWidth/window.innerHeight,.1,1000);
+const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
 renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
 renderer.setSize(window.innerWidth,window.innerHeight);
 const globe=new THREE.Group();scene.add(globe);
-const geometry=new THREE.IcosahedronGeometry(2.25,3);
-const material=new THREE.MeshBasicMaterial({color:0x00cfff,wireframe:true,transparent:true,opacity:.30});
-const mesh=new THREE.Mesh(geometry,material);globe.add(mesh);
-const inner=new THREE.Mesh(new THREE.IcosahedronGeometry(2.1,2),new THREE.MeshBasicMaterial({color:0x247aff,wireframe:true,transparent:true,opacity:.10}));globe.add(inner);
+const mesh=new THREE.Mesh(new THREE.IcosahedronGeometry(2.25,3),new THREE.MeshBasicMaterial({color:0x00cfff,wireframe:true,transparent:true,opacity:.3}));globe.add(mesh);
+const inner=new THREE.Mesh(new THREE.IcosahedronGeometry(2.1,2),new THREE.MeshBasicMaterial({color:0x247aff,wireframe:true,transparent:true,opacity:.1}));globe.add(inner);
 const pointsGeometry=new THREE.BufferGeometry();const points=[];
 for(let i=0;i<900;i++){const r=4.5+Math.random()*5;const theta=Math.random()*Math.PI*2;const phi=Math.acos(2*Math.random()-1);points.push(r*Math.sin(phi)*Math.cos(theta),r*Math.sin(phi)*Math.sin(theta),r*Math.cos(phi))}
 pointsGeometry.setAttribute("position",new THREE.Float32BufferAttribute(points,3));
 const stars=new THREE.Points(pointsGeometry,new THREE.PointsMaterial({color:0x8bdfff,size:.018,transparent:true,opacity:.8}));scene.add(stars);
-const light=new THREE.PointLight(0x00cfff,2,15);light.position.set(3,3,4);scene.add(light);
-camera.position.z=8;
-globe.position.set(window.innerWidth>850?2.2:0,window.innerWidth>850?0:-1.6,0);
-function animate(){requestAnimationFrame(animate);globe.rotation.y+=.0025;globe.rotation.x+=.0008;stars.rotation.y-=.00015;renderer.render(scene,camera)}
+const light=new THREE.PointLight(0x00cfff,2,15);light.position.set(3,3,4);scene.add(light);camera.position.z=8;
+let baseY=0;let scrollProgress=0;let targetProgress=0;
+function positionGlobe(){const desktop=window.innerWidth>850;globe.position.x=desktop?2.2:0;baseY=desktop?0:-1.6}
+positionGlobe();
+function updateScroll(){const range=Math.max(window.innerHeight,1);targetProgress=Math.max(0,Math.min(window.scrollY/range,1))}
+window.addEventListener("scroll",updateScroll,{passive:true});
+function animate(){requestAnimationFrame(animate);scrollProgress+=(targetProgress-scrollProgress)*.08;globe.position.y=baseY-scrollProgress*3.2;globe.rotation.y+=.0025+scrollProgress*.012;globe.rotation.x+=.0008+scrollProgress*.003;stars.rotation.y-=.00015;renderer.render(scene,camera)}
 animate();
-window.addEventListener("resize",()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);globe.position.x=window.innerWidth>850?2.2:0;globe.position.y=window.innerWidth>850?0:-1.6});
+window.addEventListener("resize",()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);positionGlobe();updateScroll()});
 </script>
 </body>
 </html>
