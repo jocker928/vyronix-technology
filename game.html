@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#030711">
+  <meta name="description" content="Take a quick break with the Vyronix Neon Runner game.">
+  <title>Neon Runner | VYRONIX TECHNOLOGY</title>
+  <style>
+    :root{color-scheme:dark;--cyan:#00d9ff;--muted:#aab8ca}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;padding:28px 18px;background:radial-gradient(ellipse at 50% 20%,#10213b 0,#030711 65%);color:#fff;font-family:Arial,Helvetica,sans-serif;display:grid;place-items:center}
+    main{width:min(900px,100%)}
+    .top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px}
+    .brand{font-weight:900;letter-spacing:3px;text-decoration:none;color:#fff}.brand span{color:var(--cyan)}
+    .back{color:var(--muted);text-decoration:none;font-size:14px}.back:hover{color:var(--cyan)}
+    h1{margin:0;text-align:center;font-size:clamp(28px,6vw,48px);letter-spacing:2px}.gradient{background:linear-gradient(90deg,#fff,var(--cyan),#718bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .intro{text-align:center;color:var(--muted);margin:10px 0 24px;line-height:1.6}
+    .game{position:relative;overflow:hidden;border:1px solid #1c3650;border-radius:14px;background:linear-gradient(180deg,#091326,#07101e);box-shadow:0 20px 70px #00d9ff12}
+    canvas{display:block;width:100%;height:auto;touch-action:manipulation}
+    .hud{position:absolute;inset:16px 18px auto;display:flex;justify-content:space-between;color:#dcecff;font-weight:700;font-size:14px;letter-spacing:1px;pointer-events:none}
+    .overlay{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;background:#03071199}
+    .overlay[hidden]{display:none}
+    .panel h2{margin:0 0 10px;font-size:clamp(24px,5vw,36px)}.panel p{color:#c0ccdc;line-height:1.6;margin:0 0 20px}
+    button{border:0;border-radius:6px;padding:13px 22px;background:linear-gradient(90deg,var(--cyan),#718bff);color:#00101c;font-weight:800;cursor:pointer;font-size:14px}
+    button:hover{filter:brightness(1.12);transform:translateY(-1px)}button:focus-visible,a:focus-visible{outline:2px solid #fff;outline-offset:4px}
+    .help{text-align:center;color:#91a0b4;font-size:13px;line-height:1.7;margin:16px 0 0}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="top"><a class="brand" href="index.html">VYRONIX<span>.</span></a><a class="back" href="index.html">← Back to website</a></div>
+    <h1>NEON <span class="gradient">RUNNER</span></h1>
+    <p class="intro">Jump over the incoming blocks and see how long you can run.</p>
+    <div class="game">
+      <canvas id="game" width="900" height="320" aria-label="Neon Runner game. Press Space, Arrow Up, or tap to jump over obstacles."></canvas>
+      <div class="hud"><span>VYRONIX RUNNER</span><span>SCORE <b id="score">00000</b></span></div>
+      <div class="overlay" id="overlay">
+        <div class="panel"><h2 id="message">Ready to run?</h2><p id="submessage">Press Space or tap to jump. Avoid the blocks!</p><button id="start" type="button">START GAME</button></div>
+      </div>
+    </div>
+    <p class="help">Jump: <strong>Space</strong> / <strong>↑</strong> / <strong>W</strong> or tap the game · Restart after a crash with the button</p>
+  </main>
+  <script>
+    (()=>{
+      const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
+      const scoreEl=document.getElementById('score'),overlay=document.getElementById('overlay');
+      const message=document.getElementById('message'),submessage=document.getElementById('submessage'),startButton=document.getElementById('start');
+      const W=canvas.width,H=canvas.height,ground=260;
+      let running=false,ended=false,score=0,speed=6,lastTime=0,spawnTimer=0,obstacles=[],dust=[];
+      const player={x:100,y:ground-42,w:34,h:42,vy:0,jumping:false};
+      const bestKey='vyronixRunnerBest';
+      function drawBackground(){
+        ctx.clearRect(0,0,W,H);
+        const glow=ctx.createLinearGradient(0,0,0,H);glow.addColorStop(0,'#0c1930');glow.addColorStop(1,'#07101e');ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
+        ctx.strokeStyle='rgba(0,217,255,.07)';ctx.lineWidth=1;
+        for(let x=0;x<W;x+=45){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+        for(let y=45;y<ground;y+=45){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+        ctx.strokeStyle='#00d9ff';ctx.shadowColor='#00d9ff';ctx.shadowBlur=12;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,ground);ctx.lineTo(W,ground);ctx.stroke();ctx.shadowBlur=0;
+      }
+      function drawPlayer(){
+        ctx.save();ctx.shadowColor='#00d9ff';ctx.shadowBlur=18;ctx.fillStyle='#00d9ff';
+        ctx.fillRect(player.x,player.y+9,player.w-5,player.h-9);ctx.fillRect(player.x+13,player.y,player.w-13,15);
+        ctx.shadowBlur=0;ctx.fillStyle='#06101d';ctx.fillRect(player.x+22,player.y+5,4,4);
+        ctx.fillStyle='#7cecff';ctx.fillRect(player.x+5,player.y+player.h-3,9,5);ctx.fillRect(player.x+22,player.y+player.h-3,9,5);ctx.restore();
+      }
+      function drawObstacle(o){ctx.save();ctx.shadowColor='#718bff';ctx.shadowBlur=13;ctx.fillStyle='#718bff';ctx.fillRect(o.x,o.y,o.w,o.h);ctx.fillStyle='#b8c5ff';ctx.fillRect(o.x+5,o.y+5,4,Math.max(4,o.h-10));ctx.restore()}
+      function jump(){if(!running){if(!ended)begin();return}if(!player.jumping){player.vy=-13.2;player.jumping=true}}
+      function begin(){running=true;ended=false;score=0;speed=6;spawnTimer=0;obstacles=[];dust=[];player.y=ground-player.h;player.vy=0;player.jumping=false;scoreEl.textContent='00000';overlay.hidden=true;lastTime=performance.now();requestAnimationFrame(frame)}
+      function finish(){running=false;ended=true;const best=Math.max(score,Number(localStorage.getItem(bestKey)||0));localStorage.setItem(bestKey,String(best));message.textContent='Run over!';submessage.textContent=`Score: ${String(score).padStart(5,'0')} · Best: ${String(best).padStart(5,'0')}`;startButton.textContent='PLAY AGAIN';overlay.hidden=false}
+      function frame(now){if(!running)return;const dt=Math.min((now-lastTime)/16.67,2);lastTime=now;drawBackground();
+        player.vy+=.72*dt;player.y+=player.vy*dt;if(player.y>=ground-player.h){player.y=ground-player.h;player.vy=0;player.jumping=false}
+        spawnTimer-=dt;if(spawnTimer<=0){const h=28+Math.random()*30,w=18+Math.random()*15;obstacles.push({x:W+10,y:ground-h,w,h});spawnTimer=68+Math.random()*48-Math.min(score/100,18)}
+        obstacles.forEach(o=>{o.x-=speed*dt;drawObstacle(o);if(player.x+player.w-5>o.x+3&&player.x+5<o.x+o.w-3&&player.y+player.h-4>o.y){finish()}});
+        obstacles=obstacles.filter(o=>o.x+o.w>0);drawPlayer();
+        score+=Math.floor(dt);speed=Math.min(11,6+score/700);scoreEl.textContent=String(score).padStart(5,'0');
+        if(running)requestAnimationFrame(frame)
+      }
+      startButton.addEventListener('click',begin);
+      canvas.addEventListener('pointerdown',e=>{e.preventDefault();jump()});
+      window.addEventListener('keydown',e=>{if(['Space','ArrowUp','KeyW'].includes(e.code)){e.preventDefault();if(ended){begin()}else{jump()}}});
+      drawBackground();drawPlayer();
+    })();
+  </script>
+</body>
+</html>
