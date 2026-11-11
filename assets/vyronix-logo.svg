@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VYRONIX TECHNOLOGY | Innovate Beyond Limits</title>
+<meta name="description" content="VYRONIX TECHNOLOGY – AI, software development, cybersecurity, website development and digital solutions in Kasaragod, Kerala.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ background:#030711;
+ color:white;
+ font-family:Arial,Helvetica,sans-serif;
+ overflow-x:hidden;
+}
+header{
+ position:fixed;
+ top:0;
+ width:100%;
+ z-index:100;
+ padding:22px 7%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ background:rgba(3,7,17,.78);
+ backdrop-filter:blur(15px);
+ border-bottom:1px solid #17243a;
+}
+.logo{
+ display:flex;
+ align-items:center;
+ gap:14px;
+ font-size:23px;
+ font-weight:900;
+ letter-spacing:3px;
+ color:white;
+}
+.logo-mark{
+ width:170px;
+ height:auto;
+ display:block;
+ filter:drop-shadow(0 0 12px rgba(0,217,255,.3));
+}
+.logo span{color:#00d9ff}
+nav a{
+ color:#c7d4e5;
+ text-decoration:none;
+ margin-left:25px;
+ font-size:13px;
+ transition:.3s;
+}
+nav a:hover{color:#00d9ff}
+.hero{
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ padding:130px 8% 70px;
+ position:relative;
+ overflow:hidden;
+}
+#globe{
+ position:absolute;
+ width:100%;
+ height:100%;
+ inset:0;
+ z-index:0;
+}
+.hero-content{
+ position:relative;
+ z-index:2;
+ max-width:700px;
+ pointer-events:none;
+}
+.hero-content a{pointer-events:auto}
+.tag{
+ color:#00d9ff;
+ letter-spacing:5px;
+ font-size:12px;
+ margin-bottom:25px;
+}
+h1{
+ font-size:clamp(43px,7vw,90px);
+ line-height:1.05;
+ font-weight:900;
+ letter-spacing:-3px;
+}
+.gradient{
+ background:linear-gradient(90deg,#fff,#00d9ff,#718bff);
+ -webkit-background-clip:text;
+ color:transparent;
+}
+.hero p{
+ color:#aab8ca;
+ font-size:17px;
+ line-height:1.8;
+ margin-top:25px;
+ max-width:550px;
+}
+.buttons{margin-top:35px;display:flex;gap:15px;flex-wrap:wrap}
+.btn{
+ padding:15px 25px;
+ text-decoration:none;
+ color:#00101c;
+ background:linear-gradient(90deg,#00d9ff,#718bff);
+ border-radius:5px;
+ font-weight:bold;
+ font-size:13px;
+ transition:.3s;
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 0 30px #00d9ff55}
+.btn-outline{
+ color:white;
+ border:1px solid #00d9ff;
+ background:transparent;
+}
+section{padding:100px 8%}
+.heading{text-align:center;margin-bottom:55px}
+.heading small{color:#00d9ff;letter-spacing:4px}
+.heading h2{font-size:42px;margin-top:15px}
+.heading p{color:#91a0b4;margin-top:15px}
+.about{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:50px;
+ align-items:center;
+}
+.about-box{
+ background:linear-gradient(140deg,#101d31,#080e1c);
+ padding:40px;
+ border:1px solid #1c3650;
+ border-radius:15px;
+}
+.about-box h3{font-size:28px;margin-bottom:20px}
+.about-box p{color:#aab8ca;line-height:1.9}
+.about-visual{
+ height:330px;
+ display:grid;
+ place-items:center;
+ perspective:1000px;
+}
+.cube{
+ width:190px;height:190px;
+ position:relative;
+ transform-style:preserve-3d;
+ animation:rotate 12s linear infinite;
+}
+.face{
+ position:absolute;
+ width:190px;height:190px;
+ display:grid;
+ place-items:center;
+ border:2px solid #00d9ff;
+ background:#00bfff12;
+ box-shadow:inset 0 0 35px #00d9ff22,0 0 20px #00d9ff22;
+ font-size:38px;
+ font-weight:900;
+ color:#00d9ff;
+}
+.front{transform:translateZ(95px)}
+.back{transform:rotateY(180deg) translateZ(95px)}
+.right{transform:rotateY(90deg) translateZ(95px)}
+.left{transform:rotateY(-90deg) translateZ(95px)}
+.top{transform:rotateX(90deg) translateZ(95px)}
+.bottom{transform:rotateX(-90deg) translateZ(95px)}
+@keyframes rotate{
+ from{transform:rotateX(-20deg) rotateY(0deg)}
+ to{transform:rotateX(340deg) rotateY(360deg)}
+}
+.services{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:22px;
+}
+.card{
+ padding:32px;
+ background:linear-gradient(145deg,#101b2d,#070d19);
+ border:1px solid #1b3048;
+ border-radius:12px;
+ transition:.4s;
+ min-height:220px;
+}
+.card:hover{
+ transform:translateY(-10px);
+ border-color:#00d9ff;
+ box-shadow:0 15px 45px #00d9ff12;
+}
+.icon{font-size:35px;color:#00d9ff;margin-bottom:22px}
+.card h3{font-size:20px;margin-bottom:15px}
+.card p{color:#9aaabe;line-height:1.7;font-size:14px}
+.banner{
+ text-align:center;
+ background:linear-gradient(120deg,#091b31,#10112b);
+ border-top:1px solid #18324b;
+ border-bottom:1px solid #18324b;
+}
+.banner h2{font-size:clamp(30px,5vw,55px)}
+.banner p{color:#aab8ca;margin:20px auto;max-width:650px;line-height:1.8}
+.contact{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:30px;
+}
+.contact-box{
+ padding:35px;
+ border:1px solid #1b3048;
+ background:#0b1423;
+ border-radius:12px;
+}
+.contact-box h3{font-size:25px;margin-bottom:25px}
+.contact-item{
+ padding:17px 0;
+ border-bottom:1px solid #203047;
+ color:#b4c3d6;
+ line-height:1.8;
+}
+.contact-item strong{color:#00d9ff;display:block;font-size:12px;letter-spacing:2px}
+.contact-item a{color:white;text-decoration:none}
+footer{
+ padding:35px 8%;
+ border-top:1px solid #1b3048;
+ display:flex;
+ justify-content:space-between;
+ gap:15px;
+ flex-wrap:wrap;
+ color:#8797ac;
+ font-size:12px;
+}
+@media(max-width:850px){
+ nav a{margin-left:10px;font-size:11px}
+ .services{grid-template-columns:repeat(2,1fr)}
+ .about,.contact{grid-template-columns:1fr}
+ .logo-mark{width:135px}
+}
+@media(max-width:560px){
+ header{padding:18px 5%}
+ .logo{font-size:18px; gap:10px}
+ .logo-mark{width:115px}
+ nav{display:none}
+ .hero{padding:120px 6% 60px}
+ .hero p{font-size:15px}
+ section{padding:75px 6%}
+ .services{grid-template-columns:1fr}
+ .heading h2{font-size:32px}
+ .about-box,.contact-box{padding:25px}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">
+  <img src="assets/vyronix-logo.svg" alt="VYRONIX TECHNOLOGY logo" class="logo-mark">
+  <span>VYRONIX<span>.</span></span>
+ </div>
+ <nav>
+  <a href="#home">HOME</a>
+  <a href="#about">ABOUT</a>
+  <a href="#services">SERVICES</a>
+  <a href="#contact">CONTACT</a>
+ </nav>
+</header>
+<div class="hero" id="home">
+ <canvas id="globe"></canvas>
+ <div class="hero-content">
+  <div class="tag">NEXT GENERATION TECHNOLOGY</div>
+  <h1>INNOVATE.<br><span class="gradient">DEVELOP.</span><br>SECURE.</h1>
+  <p>
+   Transforming ideas into intelligent digital solutions.
+   Discover innovation through Artificial Intelligence,
+   Software Development, Cybersecurity and Technology.
+  </p>
+  <div class="buttons">
+   <a href="#services" class="btn">EXPLORE OUR SERVICES ↗</a>
+   <a href="#contact" class="btn btn-outline">CONTACT US</a>
+  </div>
+ </div>
+</div>
+<section id="about">
+ <div class="about">
+  <div class="about-box">
+   <h3>ABOUT VYRONIX TECHNOLOGY</h3>
+   <p>
+    VYRONIX TECHNOLOGY is a technology company focused on
+    innovation, digital transformation and intelligent solutions.
+    We help businesses and individuals move forward with
+    modern software, AI technologies, web development and
+    cybersecurity solutions.
+    <br><br>
+    Our vision is to turn ambitious ideas into meaningful
+    technology that creates new possibilities.
+   </p>
+  </div>
+  <div class="about-visual">
+   <div class="cube">
+    <div class="face front">VY</div>
+    <div class="face back">AI</div>
+    <div class="face right">01</div>
+    <div class="face left">VX</div>
+    <div class="face top">TECH</div>
+    <div class="face bottom">∞</div>
+   </div>
+  </div>
+ </div>
+</section>
+<section id="services">
+ <div class="heading">
+  <small>WHAT WE DO</small>
+  <h2>OUR TECHNOLOGY</h2>
+  <p>Building digital experiences for tomorrow.</p>
+ </div>
+ <div class="services">
+  <div class="card">
+   <div class="icon">✧</div>
+   <h3>Artificial Intelligence</h3>
+   <p>AI assistants, intelligent systems, machine learning and AI-powered business solutions.</p>
+  </div>
+  <div class="card">
+   <div class="icon">⌘</div>
+   <h3>Software Development</h3>
+   <p>Custom software, business applications, management systems and digital platforms.</p>
+  </div>
+  <div class="card">
+   <div class="icon">◈</div>
+   <h3>Cybersecurity</h3>
+   <p>Ethical hacking, authorized security testing, vulnerability assessment and security research.</p>
+  </div>
+  <div class="card">
+   <div class="icon">▣</div>
+   <h3>Website Development</h3>
+   <p>Professional websites, modern web applications and responsive digital experiences.</p>
+  </div>
+  <div class="card">
+   <div class="icon">⌁</div>
+   <h3>Digital Marketing</h3>
+   <p>Digital branding, social media management and online marketing solutions.</p>
+  </div>
+  <div class="card">
+   <div class="icon">⚙</div>
+   <h3>Automation & Robotics</h3>
+   <p>Smart automation, connected systems and innovative technology development.</p>
+  </div>
+ </div>
+</section>
+<section class="banner">
+ <h2>THE FUTURE IS <span class="gradient">NOW.</span></h2>
+ <p>
+  Technology is changing the world. We believe in building,
+  exploring and creating solutions that make a difference.
+ </p>
+ <a href="#contact" class="btn">CONNECT WITH US ↗</a>
+</section>
+<section id="contact">
+ <div class="heading">
+  <small>GET IN TOUCH</small>
+  <h2>CONTACT VYRONIX</h2>
+  <p>Let's discuss your next technology project.</p>
+ </div>
+ <div class="contact">
+  <div class="contact-box">
+   <h3>VYRONIX TECHNOLOGY</h3>
+   <div class="contact-item">
+    <strong>PHONE 01</strong>
+    <a href="tel:+919961644961">+91 99616 49961</a>
+   </div>
+   <div class="contact-item">
+    <strong>PHONE 02</strong>
+    <a href="tel:+917559064669">+91 75590 64669</a>
+   </div>
+   <div class="contact-item">
+    <strong>LOCATION</strong>
+    Gallilia Building, Chattanchal,<br>
+    Kasaragod, Kerala, India.
+   </div>
+   <div class="contact-item">
+    <strong>INSTAGRAM</strong>
+    <a href="https://www.instagram.com/vyronixtechnology/"
+       target="_blank"> @vyronixtechnology ↗</a>
+   </div>
+  </div>
+  <div class="contact-box">
+   <h3>LET'S CONNECT</h3>
+   <p style="color:#aab8ca;line-height:1.9;margin-bottom:25px">
+    Have a project or business idea?
+    Contact our team directly through phone or WhatsApp.
+   </p>
+   <a class="btn" style="display:block;text-align:center;margin-bottom:15px"
+      href="https://wa.me/919961644961?text=Hello%20VYRONIX%20TECHNOLOGY">
+      WHATSAPP NOW ↗
+   </a>
+   <a class="btn btn-outline" style="display:block;text-align:center;margin-bottom:15px"
+      href="tel:+919961644961">
+      CALL NOW
+   </a>
+   <a class="btn btn-outline" style="display:block;text-align:center"
+      href="https://wa.me/917559064669?text=Hello%20VYRONIX%20TECHNOLOGY">
+      WHATSAPP SECOND NUMBER
+   </a>
+  </div>
+ </div>
+</section>
+<footer>
+ <div>© <span id="year"></span> VYRONIX TECHNOLOGY. All rights reserved.</div>
+ <div>INNOVATE. DEVELOP. SECURE.</div>
+</footer>
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+const canvas=document.getElementById("globe");
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(
+ 55,window.innerWidth/window.innerHeight,0.1,1000
+);
+const renderer=new THREE.WebGLRenderer({
+ canvas:canvas,alpha:true,antialias:true
+});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+renderer.setSize(window.innerWidth,window.innerHeight);
+const globe=new THREE.Group();
+scene.add(globe);
+const geometry=new THREE.IcosahedronGeometry(2.25,3);
+const material=new THREE.MeshBasicMaterial({
+ color:0x00cfff,
+ wireframe:true,
+ transparent:true,
+ opacity:.30
+});
+const mesh=new THREE.Mesh(geometry,material);
+globe.add(mesh);
+const inner=new THREE.Mesh(
+ new THREE.IcosahedronGeometry(2.1,2),
+ new THREE.MeshBasicMaterial({
+  color:0x247aff,
+  wireframe:true,
+  transparent:true,
+  opacity:.10
+ })
+);
+globe.add(inner);
+const pointsGeometry=new THREE.BufferGeometry();
+const points=[];
+for(let i=0;i<900;i++){
+ const r=4.5+Math.random()*5;
+ const theta=Math.random()*Math.PI*2;
+ const phi=Math.acos(2*Math.random()-1);
+ points.push(
+  r*Math.sin(phi)*Math.cos(theta),
+  r*Math.sin(phi)*Math.sin(theta),
+  r*Math.cos(phi)
+ );
+}
+pointsGeometry.setAttribute(
+ "position",new THREE.Float32BufferAttribute(points,3)
+);
+const stars=new THREE.Points(
+ pointsGeometry,
+ new THREE.PointsMaterial({
+  color:0x8bdfff,size:.018,transparent:true,opacity:.8
+ })
+);
+scene.add(stars);
+const light=new THREE.PointLight(0x00cfff,2,15);
+light.position.set(3,3,4);
+scene.add(light);
+camera.position.z=8;
+globe.position.set(
+ window.innerWidth>850?2.2:0,
+ window.innerWidth>850?0:-1.6,
+ 0
+);
+function animate(){
+ requestAnimationFrame(animate);
+ globe.rotation.y+=.0025;
+ globe.rotation.x+=.0008;
+ stars.rotation.y-=.00015;
+ renderer.render(scene,camera);
+}
+animate();
+window.addEventListener("resize",()=>{
+ camera.aspect=window.innerWidth/window.innerHeight;
+ camera.updateProjectionMatrix();
+ renderer.setSize(window.innerWidth,window.innerHeight);
+ globe.position.x=window.innerWidth>850?2.2:0;
+ globe.position.y=window.innerWidth>850?0:-1.6;
+});
+</script>
+</body>
+</html>
